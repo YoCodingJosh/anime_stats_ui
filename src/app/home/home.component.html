@@ -1,13 +1,17 @@
 <div id="content" class="container">
   <h1>Welcome!</h1>
   <p>This app will show you interesting statistics from your anime watchlist.</p>
-  <button type="button" id="loginButton" class="btn btn-info btn-lg">Let's get started!</button>
+  <button type="button" id="loginButton" class="btn btn-info btn-lg" (click)="startAuth()" [disabled]="isDoingAuth">
+    {{this.buttonText}}
+  </button>
   <br />
-  <small id="errorText"></small>
+  <small *ngIf="errorText">
+    {{errorText}}
+    <br/>
+  </small>
   <small>You will be taken to MyAnimeList to authenticate/authorize.</small>
   <br />
   <br />
-  <h4 id="ieDetectionText"></h4>
   <p>
     <small>
       <strong>Cookies Notice:</strong> This website uses cookies and local storage to synchronize your session
