@@ -18,6 +18,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  generateAuthUrl(pkce: string, clientId: string, state: string): string {
+    let challenge: string = pkce;
+    var clientId: string = clientId;
+    var state: string = state;
+    var redirect: string = `${window.location.protocol}//${window.location.host}/api/redirect`;
+
+    return `https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=${clientId}&code_challenge=${challenge}&code_challenge_method=plain&redirect_uri=${redirect}&state=${state}`;
+  }
+
   startAuth(): void {
     this.isDoingAuth = true;
     this.buttonText = 'Loading...';
@@ -30,6 +39,15 @@ export class HomeComponent implements OnInit {
     let resultObservable = this.http.post<IStartAuthResponse>(environment.apiUrl + "/start-auth", {
       session: window.localStorage.getItem("session"),
       state: window.localStorage.getItem("state")
-    }).subscribe();
+    }).subscribe((data: IStartAuthResponse) => {
+      window.localStorage.setItem("state", data.state);
+      window.localStorage.setItem("session", data.sessionId);
+
+      let authUrl: string = this.generateAuthUrl(data.pkce, data.clientId, data.state);
+
+      window.location.href = authUrl;
+
+      resultObservable.unsubscribe();
+    });
   }
 }
