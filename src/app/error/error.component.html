@@ -1,1 +1,8 @@
-<p>error works!</p>
+<div class="container">
+  <h2>Oh snap!</h2>
+  <h5>An error occurred. Please try again. I'll try to give a better error message later. :)</h5>
+  <!-- TODO: Get the error details from the server somehow? -->
+  <img [src]="errorGif" style="display: block;" class="imageResponsive">
+  <p><strong>Guru Meditation: </strong>{{state}}</p>
+  <button type="button" (click)="goBack()" class="btn btn-secondary btn-lg">Go Back Home</button>
+</div>
