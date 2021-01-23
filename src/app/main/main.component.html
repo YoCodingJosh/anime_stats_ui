@@ -1,1 +1,14 @@
-<p>main works!</p>
+<div class="container">
+  <div class="text-center" id="userPanel">
+    <img src="" id="avatarImage">
+    <h5 id="welcomeText"></h5>
+  </div>
+  <div *ngIf="isLoading">
+    <h1 class="text-center" id="loadingText">Starting the application...</h1>
+    <p class="text-center">
+      <img id="loadingImage" class="imageResponsive" [src]="loadingGif">
+    </p>
+  </div>
+  <div *ngElse>
+  </div>
+</div>

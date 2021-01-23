@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
+import { MainGuard } from './main/main.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    component: MainComponent
+    component: MainComponent,
+    canActivate: [MainGuard]
   },
   {
     path: 'auth-error',
