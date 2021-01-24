@@ -12,10 +12,6 @@
   height: auto;
 }
 
-#userPanel {
-  display: none;
-}
-
 @media only screen and (max-width: 600px) {
   #avatarImage {
     border-radius: 50%;
