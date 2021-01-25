@@ -1,8 +1,8 @@
 <div class="container">
   <div>
     <div class="text-center" id="userPanel" *ngIf="showWelcome">
-      <img [src]="userData.picture" id="avatarImage">
-      <h5 id="welcomeText">Welcome {{userData.name}}</h5>
+      <img [src]="userData!.picture" id="avatarImage">
+      <h5 id="welcomeText">Welcome {{userData!.name}}</h5>
     </div>
   </div>
   <div>
