@@ -8,12 +8,15 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { MainComponent } from './main/main.component';
 
+import { StatusChart } from './main/views/statuschart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorComponent,
-    MainComponent
+    MainComponent,
+    StatusChart,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { IStatsData } from '../StatsData';
 import { IUserProfileDetails } from './UserProfileDetails';
 
 @Component({
@@ -15,7 +16,7 @@ export class MainComponent implements OnInit {
 
   userData?: IUserProfileDetails | null = null;
 
-  statsData?: object | null = null;
+  statsData?: IStatsData | null = null;
 
   constructor(private http: HttpClient) { }
 
@@ -52,7 +53,7 @@ export class MainComponent implements OnInit {
     }, 600);
 
     // kick off the process
-    let resultObservable = this.http.post<IUserProfileDetails>("/api/get-stats", {
+    let resultObservable = this.http.post<IStatsData>("/api/get-stats", {
       session: window.localStorage.getItem("session"),
       state: window.localStorage.getItem("state")
     }).subscribe({
